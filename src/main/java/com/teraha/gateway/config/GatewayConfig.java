@@ -10,6 +10,14 @@ public class GatewayConfig {
 	@Bean
 	public RouteLocator routes(RouteLocatorBuilder builder){
 		return builder.routes()
+			.route("products-docs", route -> route
+					.path("/products/v3/api-docs")
+					.filters(f -> f.stripPrefix(1))
+					.uri("lb://PRODUCTS"))
+			.route("purchases", route -> route
+					.path("/purchases/v3/api-docs")
+					.filters(f -> f.stripPrefix(1))
+					.uri("lb://PURCHASES"))
 			.route("products", route -> route
 					.path("/products/**")
 					.uri("lb://PRODUCTS"))

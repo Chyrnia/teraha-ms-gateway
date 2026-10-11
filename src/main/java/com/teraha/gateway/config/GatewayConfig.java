@@ -14,7 +14,7 @@ public class GatewayConfig {
 					.path("/products/v3/api-docs")
 					.filters(f -> f.stripPrefix(1))
 					.uri("lb://PRODUCTS"))
-			.route("purchases", route -> route
+			.route("purchases-docs", route -> route
 					.path("/purchases/v3/api-docs")
 					.filters(f -> f.stripPrefix(1))
 					.uri("lb://PURCHASES"))

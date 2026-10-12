@@ -18,6 +18,14 @@ public class GatewayConfig {
 					.path("/purchases/v3/api-docs")
 					.filters(f -> f.stripPrefix(1))
 					.uri("lb://PURCHASES"))
+				.route("sales-docs", route -> route
+						.path("/sales/v3/api-docs")
+						.filters(f -> f.stripPrefix(1))
+						.uri("lb://SALES"))
+				.route("clients-docs", route -> route
+						.path("/clients/v3/api-docs")
+						.filters(f -> f.stripPrefix(1))
+						.uri("lb://CLIENTS"))
 			.route("products", route -> route
 					.path("/products/**")
 					.uri("lb://PRODUCTS"))
@@ -27,6 +35,12 @@ public class GatewayConfig {
 			.route("suppliers", route -> route
 					.path("/suppliers/**")
 					.uri("lb://PURCHASES"))
+				.route("sales", route -> route
+						.path("/sales/**")
+						.uri("lb://SALES"))
+				.route("clients", route -> route
+						.path("/clients/**")
+						.uri("lb://CLIENTS"))
 			.build();
 
 	}

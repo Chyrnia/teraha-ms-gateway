@@ -39,8 +39,8 @@ public class GatewaySecurityConfig {
 						).permitAll()
 
 					//Login
-					.pathMatchers(HttpMethod.POST, "/auth/login")
-					.permitAll()
+					.pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+					.pathMatchers(HttpMethod.POST, "/auth/login").permitAll()
 
 					//All have to auth
 					.anyExchange().authenticated())

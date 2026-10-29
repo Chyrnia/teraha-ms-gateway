@@ -25,6 +25,7 @@ public class GatewaySecurityConfig {
                 NoOpServerSecurityContextRepository.getInstance())
 			.authorizeExchange(auth -> auth
 
+					//Documentation
 					.pathMatchers(
 						"/swagger-ui.html",
 						"/swagger-ui/**",
@@ -33,12 +34,15 @@ public class GatewaySecurityConfig {
 						"/products/v3/api-docs",
 						"/purchases/v3/api-docs",
 						"/sales/v3/api-docs",
-						"/clients/v3/api-docs"
+						"/clients/v3/api-docs",
+						"/security/v3/api-docs"
 						).permitAll()
 
+					//Login
 					.pathMatchers(HttpMethod.POST, "/auth/login")
 					.permitAll()
 
+					//All have to auth
 					.anyExchange().authenticated())
 
 					.oauth2ResourceServer(oauth2 ->

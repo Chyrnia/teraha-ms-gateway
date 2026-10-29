@@ -16,6 +16,10 @@ public class GatewayConfig {
 			.route("security-users", route -> route
 					.path("/users", "/users/**")
 					.uri("lb://SECURITY"))
+			.route("security-docs", route -> route
+					.path("/security/v3/api-docs")
+					.filters(f -> f.stripPrefix(1))
+					.uri("lb://SECURITY"))
 			.route("products-docs", route -> route
 					.path("/products/v3/api-docs")
 					.filters(f -> f.stripPrefix(1))

@@ -36,8 +36,17 @@ public class GatewayConfig {
 					.path("/clients/v3/api-docs")
 					.filters(f -> f.stripPrefix(1))
 					.uri("lb://SALES"))
+			.route("products-reports", route -> route
+					.path("/reports/products/**")
+					.uri("lb://PRODUCTS"))
+			.route("sales-reports", route -> route
+					.path("/reports/sales/**")
+					.uri("lb://SALES"))
 			.route("products", route -> route
 					.path("/products/**")
+					.uri("lb://PRODUCTS"))
+			.route("categories", route -> route
+					.path("/categories", "/categories/**")
 					.uri("lb://PRODUCTS"))
 			.route("purchases", route -> route
 					.path("/purchases/**")

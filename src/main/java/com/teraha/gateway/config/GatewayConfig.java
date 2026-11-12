@@ -10,6 +10,9 @@ public class GatewayConfig {
 	@Bean
 	public RouteLocator routes(RouteLocatorBuilder builder){
 		return builder.routes()
+			.route("app-settings", route -> route
+					.path("/settings/**")
+					.uri("lb://SECURITY"))
 			.route("security-auth", route -> route
 					.path("/auth/**")
 					.uri("lb://SECURITY"))
